@@ -10,29 +10,27 @@ class Repair:
         sortByRules = randomGen.randint(1, 7)
         tempArray = []
         if sortByRules == 1:
-            sorted(self.solution.notServed, key = lambda node: node.demand, reverse = True)
-            # sort by demand, from high to low
-            
+            self.solution.notServed = sorted(self.solution.notServed, key=lambda node: node.demand, reverse=True)
         elif sortByRules == 2:
-            sorted(self.solution.notServed, key = lambda node: (node.x - self.instance.depot.x )**2 + (node.y - self.instance.depot.y)**2, reverse = True)
-            # sort by distance, from high to low
-            
+            self.solution.notServed = sorted(
+                self.solution.notServed,
+                key=lambda node: (node.x - self.instance.depot.x)**2 + (node.y - self.instance.depot.y)**2,
+                reverse=True
+            )
         elif sortByRules == 3:
-            sorted(self.solution.notServed, key = lambda node: (node.x - self.instance.depot.x )**2 + (node.y - self.instance.depot.y)**2, reverse = False)
-            # sort by distance, from low to high
-            
+            self.solution.notServed = sorted(
+                self.solution.notServed,
+                key=lambda node: (node.x - self.instance.depot.x)**2 + (node.y - self.instance.depot.y)**2,
+                reverse=False
+            )
         elif sortByRules == 4:
-            sorted(self.solution.notServed, key = lambda node: node.dueTime - node.readyTime, reverse = False)
+            self.solution.notServed = sorted(self.solution.notServed, key=lambda node: node.dueTime - node.readyTime, reverse=False)
         elif sortByRules == 5:
-            sorted(self.solution.notServed, key = lambda node: node.readyTime, reverse = False)
+            self.solution.notServed = sorted(self.solution.notServed, key=lambda node: node.readyTime, reverse=False)
         elif sortByRules == 7:
-            sorted(self.solution.notServed, key = lambda node: node.dueTime, reverse = True)
+            self.solution.notServed = sorted(self.solution.notServed, key=lambda node: node.dueTime, reverse=True)
         else:
             randomGen.shuffle(self.solution.notServed)
-            # random shuffle
-            # print("H4")
-            # for node in self.solution.notServed:
-            #     print(node)
 
         tempArray = self.solution.notServed.copy()
         

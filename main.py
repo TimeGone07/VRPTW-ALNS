@@ -24,9 +24,9 @@ if __name__ == "__main__":
     category = "Gehring&Homberge"
     
     # test list : C2_6_3.txt (checked)
-    # folder = "./benchmark/Solomon/"
-    # instList = get_all_instances(folder)
-    # category = "Solomon"
+    folder = "./benchmark/Solomon/"
+    instList = get_all_instances(folder)
+    category = "Solomon"
     instList.sort()
     # print(instList)
     
@@ -35,7 +35,7 @@ if __name__ == "__main__":
     file_exists = os.path.exists(file_path)
     # print(instList[10:20] + instList[60:70] + instList[110:120] + instList[160:170] + instList[210:220] )
 
-    for inst in instList[10:20] + instList[60:70] + instList[110:120] + instList[160:170] + instList[210:220] :
+    for inst in instList:
         # 200 customer instances ... 
         fileName = folder + inst
         curInstance = Instance.readInstance(fileName)
